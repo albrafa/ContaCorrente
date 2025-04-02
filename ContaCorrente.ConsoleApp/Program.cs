@@ -55,7 +55,7 @@ namespace ContaCorrente.ConsoleApp
                 Console.WriteLine($"Depósito realizado. Seu saldo atual é de R${userBalance}");
 
             }
-
+             
 
                 Console.ReadLine();
         }
