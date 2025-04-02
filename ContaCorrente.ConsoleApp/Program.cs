@@ -9,23 +9,26 @@ namespace ContaCorrente.ConsoleApp
     {
         static void Main(string[] args)
         {
-            string transactionsHistory;
+            string[] transactionsHistory = new string[100];
+            int userTransactions = 0;
+
+
+            // saldo em conta [x]
+            double userBalance = 1000;
+            double moneyTransfer = 0;
+
 
             // numero da conta [x]
+
+            int accountNumberOne = 10;
+            int accountNumberTwo = 30;
+
             Console.Write("Digite o número da conta: ");
             int userLogin = Convert.ToInt32(Console.ReadLine());
 
-            // saldo em conta []
-            double userBalance = 1000;
-
-            double userTransactions;
-            
-            
-
-            double negativeBalanceLimit;
 
 
-            //menu
+            //menu [x]
             Console.WriteLine("--------------------------------------");
             Console.WriteLine("Banco Brantander Econômica do Brasil");
             Console.WriteLine("--------------------------------------");
@@ -39,6 +42,8 @@ namespace ContaCorrente.ConsoleApp
             Console.WriteLine();
 
             int opcao = Convert.ToInt32(Console.ReadLine());
+
+
 
             if (opcao == 1)
             {
@@ -70,6 +75,39 @@ namespace ContaCorrente.ConsoleApp
                 {
                     userBalance = userBalance - accountWithdrawals;
                     Console.WriteLine($"Transação realizada. Seu saldo atual é de R${userBalance}");
+                }
+            }
+
+            else if (opcao == 4)
+            {
+                Console.Write($"Deposite o valor que deseja transferir: ");
+                if (moneyTransfer > userBalance)
+                {
+                    Console.WriteLine($"Não é possível realizar transferências com valores acima do saldo atual. Por favor, informe um novo valor para transferência.");
+
+                }
+                else
+                {
+
+                }
+            }
+
+            else if (opcao == 5)
+            {
+                Console.WriteLine("Histórico de transações: ");
+                if (userTransactions == 0)
+                {
+                    Console.WriteLine("Nenhuma operação realizada no momento.");
+                }
+
+                else
+                {
+                    for (int i = 0; i < userTransactions; i++)
+                    {
+                        Console.WriteLine("HISTÓRICO DE TRANSAÇÕES: ");
+                        Console.WriteLine(transactionsHistory[i]);
+
+                    }
                 }
             }
 
