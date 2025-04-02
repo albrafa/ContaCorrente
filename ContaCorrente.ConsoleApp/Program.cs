@@ -19,7 +19,7 @@ namespace ContaCorrente.ConsoleApp
             double userBalance = 1000;
 
             double userTransactions;
-            double accountWithdrawwals;
+            
             
 
             double negativeBalanceLimit;
@@ -55,7 +55,24 @@ namespace ContaCorrente.ConsoleApp
                 Console.WriteLine($"Depósito realizado. Seu saldo atual é de R${userBalance}");
 
             }
-             
+
+            else if (opcao == 3)
+            {
+                Console.Write("Informe o valor que deseja sacar: ");
+                double accountWithdrawals = Convert.ToDouble(Console.ReadLine());
+
+                if (accountWithdrawals > userBalance)
+                {
+                    Console.WriteLine($"Transação não efetuada. Não é permitido saque acima do valor depositado em conta. Seu saldo atual é de R${userBalance}.");
+                    
+                }
+                else
+                {
+                    userBalance = userBalance - accountWithdrawals;
+                    Console.WriteLine($"Transação realizada. Seu saldo atual é de R${userBalance}");
+                }
+            }
+
 
                 Console.ReadLine();
         }
