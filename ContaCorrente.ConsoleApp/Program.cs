@@ -51,7 +51,7 @@ namespace ContaCorrente.ConsoleApp
 
 
             Console.ReadLine();
-        }
+        } 
 
         private static void BalanceTransactionsHistoryAccount2(string[] transactionsHistoryAccount2, int userTransactionsAccount2, ref double userBalanceAccount2, ref double moneyTransferAccount2, ref double userBalance, int opcao)
         {
