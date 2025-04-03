@@ -9,6 +9,7 @@ namespace ContaCorrente.ConsoleApp
     {
         static void Main(string[] args)
         {
+
             string[] transactionsHistory = new string[100];
             string[] transactionsHistoryAccount2 = new string[100];
             int userTransactionsAccount2 = 0;
@@ -90,6 +91,8 @@ namespace ContaCorrente.ConsoleApp
                 else if (opcao == 4)
                 {
                     Console.Write($"Deposite o valor que deseja transferir: ");
+                    moneyTransfer = Convert.ToDouble(Console.ReadLine());
+
                     if (moneyTransfer > userBalance)
                     {
                         Console.WriteLine($"Não é possível realizar transferências com valores acima do saldo atual. Por favor, informe um novo valor para transferência.");
@@ -97,13 +100,10 @@ namespace ContaCorrente.ConsoleApp
                     }
                     else if (userBalance > moneyTransfer)
                     {
-                        Console.Write("Informe o valor que deseja depositar na conta número dois: ");
-
-                        moneyTransfer = Convert.ToDouble(Console.ReadLine());
                         userBalance = userBalance - moneyTransfer;
                         userBalanceAccount2 = userBalanceAccount2 + moneyTransfer;
                         Console.WriteLine();
-                        Console.WriteLine($"Transferência entre contas realiaza! Seu saldo atual é de {userBalance}.");
+                        Console.WriteLine($"Transferência entre contas realiaza! Seu saldo atual é de R${userBalance}.");
                     }
                 }
 
@@ -171,8 +171,8 @@ namespace ContaCorrente.ConsoleApp
 
                     if (accountWithdrawalsAccount2 > userBalanceAccount2)
                     {
+                        moneyTransferAccount2 = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine($"Transação não efetuada. Não é permitido saque acima do valor depositado em conta. Seu saldo atual é de R${userBalance}.");
-
                     }
                     else
                     {
@@ -184,6 +184,8 @@ namespace ContaCorrente.ConsoleApp
                 else if (opcao == 4)
                 {
                     Console.Write($"Deposite o valor que deseja transferir: ");
+                    moneyTransferAccount2 = Convert.ToDouble(Console.ReadLine());
+
                     if (moneyTransferAccount2 > userBalanceAccount2)
                     {
                         Console.WriteLine($"Não é possível realizar transferências com valores acima do saldo atual. Por favor, informe um novo valor para transferência.");
