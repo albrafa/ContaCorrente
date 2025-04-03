@@ -10,7 +10,17 @@ namespace ContaCorrente.ConsoleApp
         static void Main(string[] args)
         {
             string[] transactionsHistory = new string[100];
+            string[] transactionsHistoryAccount2 = new string[100];
+            int userTransactionsAccount2 = 0;
+
+
+            // saldo em conta [x]
+            double userBalanceAccount2 = 2000;
+            double moneyTransferAccount2 = 0;
+
             int userTransactions = 0;
+
+            #region Conta Corrente 1
 
 
             // saldo em conta [x]
@@ -26,93 +36,195 @@ namespace ContaCorrente.ConsoleApp
             Console.Write("Digite o número da conta: ");
             int userLogin = Convert.ToInt32(Console.ReadLine());
 
-
-
-            //menu [x]
-            Console.WriteLine("--------------------------------------");
-            Console.WriteLine("Banco Brantander Econômica do Brasil");
-            Console.WriteLine("--------------------------------------");
-            Console.WriteLine("Digite a operação desejada:");
-            Console.WriteLine("");
-            Console.WriteLine("1 - Ver saldo");
-            Console.WriteLine("2 - Realizar depósito");
-            Console.WriteLine("3 - Saque");
-            Console.WriteLine("4 - Transferência entre contas");
-            Console.WriteLine("5 - Histórico de transações");
-            Console.WriteLine();
-
-            int opcao = Convert.ToInt32(Console.ReadLine());
-
-
-
-            if (opcao == 1)
+            if (userLogin == accountNumberOne)
             {
-                Console.WriteLine($"Seu saldo atual é de R${userBalance}");
-                
-            }
-            else if (opcao == 2)
-            {
-                Console.Write("Digite o valor que deseja depositar: ");
-                double accountDeposits = Convert.ToDouble(Console.ReadLine());
+                //menu [x]
+                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("Banco Brantander Econômica do Brasil");
+                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("Digite a operação desejada:");
+                Console.WriteLine("");
+                Console.WriteLine("1 - Ver saldo");
+                Console.WriteLine("2 - Realizar depósito");
+                Console.WriteLine("3 - Saque");
+                Console.WriteLine("4 - Transferência entre contas");
+                Console.WriteLine("5 - Histórico de transações");
+                Console.WriteLine();
 
-                userBalance = userBalance + accountDeposits;
+                int opcao = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine($"Depósito realizado. Seu saldo atual é de R${userBalance}");
 
-            }
-
-            else if (opcao == 3)
-            {
-                Console.Write("Informe o valor que deseja sacar: ");
-                double accountWithdrawals = Convert.ToDouble(Console.ReadLine());
-
-                if (accountWithdrawals > userBalance)
+                if (opcao == 1)
                 {
-                    Console.WriteLine($"Transação não efetuada. Não é permitido saque acima do valor depositado em conta. Seu saldo atual é de R${userBalance}.");
-                    
-                }
-                else
-                {
-                    userBalance = userBalance - accountWithdrawals;
-                    Console.WriteLine($"Transação realizada. Seu saldo atual é de R${userBalance}");
-                }
-            }
-
-            else if (opcao == 4)
-            {
-                Console.Write($"Deposite o valor que deseja transferir: ");
-                if (moneyTransfer > userBalance)
-                {
-                    Console.WriteLine($"Não é possível realizar transferências com valores acima do saldo atual. Por favor, informe um novo valor para transferência.");
+                    Console.WriteLine($"Seu saldo atual é de R${userBalance}");
 
                 }
-                else
+                else if (opcao == 2)
                 {
+                    Console.Write("Digite o valor que deseja depositar: ");
+                    double accountDeposits = Convert.ToDouble(Console.ReadLine());
+
+                    userBalance = userBalance + accountDeposits;
+
+                    Console.WriteLine($"Depósito realizado. Seu saldo atual é de R${userBalance}");
 
                 }
-            }
 
-            else if (opcao == 5)
-            {
-                Console.WriteLine("Histórico de transações: ");
-                if (userTransactions == 0)
+                else if (opcao == 3)
                 {
-                    Console.WriteLine("Nenhuma operação realizada no momento.");
-                }
+                    Console.Write("Informe o valor que deseja sacar: ");
+                    double accountWithdrawals = Convert.ToDouble(Console.ReadLine());
 
-                else
-                {
-                    for (int i = 0; i < userTransactions; i++)
+                    if (accountWithdrawals > userBalance)
                     {
-                        Console.WriteLine("HISTÓRICO DE TRANSAÇÕES: ");
-                        Console.WriteLine(transactionsHistory[i]);
+                        Console.WriteLine($"Transação não efetuada. Não é permitido saque acima do valor depositado em conta. Seu saldo atual é de R${userBalance}.");
 
+                    }
+                    else
+                    {
+                        userBalance = userBalance - accountWithdrawals;
+                        Console.WriteLine($"Transação realizada. Seu saldo atual é de R${userBalance}");
+                    }
+                }
+
+                else if (opcao == 4)
+                {
+                    Console.Write($"Deposite o valor que deseja transferir: ");
+                    if (moneyTransfer > userBalance)
+                    {
+                        Console.WriteLine($"Não é possível realizar transferências com valores acima do saldo atual. Por favor, informe um novo valor para transferência.");
+
+                    }
+                    else if (userBalance > moneyTransfer)
+                    {
+                        Console.Write("Informe o valor que deseja depositar na conta número dois: ");
+
+                        moneyTransfer = Convert.ToDouble(Console.ReadLine());
+                        userBalance = userBalance - moneyTransfer;
+                        userBalanceAccount2 = userBalanceAccount2 + moneyTransfer;
+                        Console.WriteLine();
+                        Console.WriteLine($"Transferência entre contas realiaza! Seu saldo atual é de {userBalance}.");
+                    }
+                }
+
+                else if (opcao == 5)
+                {
+                    Console.WriteLine("Histórico de transações: ");
+                    if (userTransactions == 0)
+                    {
+                        Console.WriteLine("Nenhuma operação realizada no momento.");
+                    }
+
+                    else
+                    {
+                        for (int i = 0; i < userTransactions; i++)
+                        {
+                            Console.WriteLine("HISTÓRICO DE TRANSAÇÕES: ");
+                            Console.WriteLine(transactionsHistory[i]);
+
+                        }
+                    }
+                }
+
+            }
+
+            #endregion
+
+            #region Conta Corrente 2
+
+            if (userLogin == accountNumberTwo)
+            {
+                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("Banco Brantander Econômica do Brasil");
+                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("Digite a operação desejada:");
+                Console.WriteLine("");
+                Console.WriteLine("1 - Ver saldo");
+                Console.WriteLine("2 - Realizar depósito");
+                Console.WriteLine("3 - Saque");
+                Console.WriteLine("4 - Transferência entre contas");
+                Console.WriteLine("5 - Histórico de transações");
+                Console.WriteLine();
+
+                int opcao = Convert.ToInt32(Console.ReadLine());
+
+                if (opcao == 1)
+                {
+                    Console.WriteLine($"Seu saldo atual é de R${userBalanceAccount2}");
+
+                }
+                else if (opcao == 2)
+                {
+                    Console.Write("Digite o valor que deseja depositar: ");
+                    double accountDepositsAccount2 = Convert.ToDouble(Console.ReadLine());
+
+                    userBalanceAccount2 = userBalanceAccount2 + accountDepositsAccount2;
+
+                    Console.WriteLine($"Depósito realizado. Seu saldo atual é de R${userBalanceAccount2}");
+
+                }
+
+                else if (opcao == 3)
+                {
+                    Console.Write("Informe o valor que deseja sacar: ");
+                    double accountWithdrawalsAccount2 = Convert.ToDouble(Console.ReadLine());
+
+                    if (accountWithdrawalsAccount2 > userBalanceAccount2)
+                    {
+                        Console.WriteLine($"Transação não efetuada. Não é permitido saque acima do valor depositado em conta. Seu saldo atual é de R${userBalance}.");
+
+                    }
+                    else
+                    {
+                        userBalanceAccount2 = userBalanceAccount2 - accountWithdrawalsAccount2;
+                        Console.WriteLine($"Transação realizada. Seu saldo atual é de R${userBalanceAccount2}");
+                    }
+                }
+
+                else if (opcao == 4)
+                {
+                    Console.Write($"Deposite o valor que deseja transferir: ");
+                    if (moneyTransferAccount2 > userBalanceAccount2)
+                    {
+                        Console.WriteLine($"Não é possível realizar transferências com valores acima do saldo atual. Por favor, informe um novo valor para transferência.");
+
+                    }
+                    else if (userBalanceAccount2 > moneyTransferAccount2)
+                    {
+                        Console.Write("Informe o valor que deseja depositar na conta número dois: ");
+
+                        moneyTransferAccount2 = Convert.ToDouble(Console.ReadLine());
+                        userBalanceAccount2 = userBalanceAccount2 - moneyTransferAccount2;
+                        userBalance = userBalance + moneyTransferAccount2;
+                        Console.WriteLine();
+                        Console.WriteLine($"Transferência entre contas realiaza! Seu saldo atual é de {userBalanceAccount2}.");
+                    }
+                }
+
+                else if (opcao == 5)
+                {
+                    Console.WriteLine("Histórico de transações: ");
+                    if (userTransactionsAccount2 == 0)
+                    {
+                        Console.WriteLine("Nenhuma operação realizada no momento.");
+                    }
+
+                    else
+                    {
+                        for (int i = 0; i < userTransactionsAccount2; i++)
+                        {
+                            Console.WriteLine("HISTÓRICO DE TRANSAÇÕES: ");
+                            Console.WriteLine(transactionsHistoryAccount2[i]);
+
+                        }
                     }
                 }
             }
 
 
-                Console.ReadLine();
+            #endregion
+
+            Console.ReadLine();
         }
     }
 }
